@@ -1,0 +1,62 @@
+@(lista : java.util.List[Anuncio])
+@import play.api.mvc.Flash
+
+<ol class="breadcrumb">
+    <li class="active"><a href="/anuncio">Anuncio</a></li>
+</ol>
+
+
+
+
+@main("Anuncios") {
+
+        <a class="btn btn-primary" href="/anuncio/add">Adicionar Anuncio</a>
+        <br/>
+        <div class="panel panel-default">
+            <div class="panel-heading">Anuncio</div>
+            <div class="panel-body">
+            @for(itm_mestre <- lista){
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                    <a class="" href="/anuncio/update/@itm_mestre.uuid">@itm_mestre.get_nome()</a>
+                    <a class="btn btn-danger col-sm-offset-11" href="/anuncio/delete/@itm_mestre.uuid">Excluir</a>
+                    </div>
+                    <div class="panel-body">
+                        <a class="btn btn-primary" href="/beneficio/add/@itm_mestre.uuid">Adicionar Benefício</a>
+                        <ul class="list-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Detalhes</div>
+                                <div class="panel-body">
+                                @for(itm_beneficio <- itm_mestre.get_beneficios()){
+                                    <li class="list-group-item">
+                                        <a class="col-sm-6" href="/beneficio/update/@itm_beneficio.uuid">@itm_beneficio.get_nome()</a>
+                                        <a class="btn btn-danger col-sm-offset-5" href="/beneficio/delete/@itm_beneficio.uuid">Excluir</a>
+                                    </li>
+                                }
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <a class="btn btn-primary" href="/beneficio/add/@itm_mestre.uuid">Adicionar Requisito</a>
+                        <ul class="list-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Detalhes</div>
+                                <div class="panel-body">
+                                @for(itm_requisito <- itm_mestre.get_prerequisitos()){
+                                    <li class="list-group-item">
+                                        <a class="col-sm-6" href="/beneficio/update/@itm_requisito.uuid">@itm_requisito.get_nome()</a>
+                                        <a class="btn btn-danger col-sm-offset-5" href="/beneficio/delete/@itm_requisito.uuid">Excluir</a>
+                                    </li>
+                                }
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            }
+            </div>
+        </div>
+
+
+}

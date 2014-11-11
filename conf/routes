@@ -1,0 +1,30 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /                            controllers.Application.index()
+GET         /anuncio                     controllers.AnuncioController.index()
+# mestre
+GET         /anuncio/update/:uuid        controllers.AnuncioController.update(uuid)
+GET         /anuncio/delete/:uuid        controllers.AnuncioController.delete(uuid)
+GET         /anuncio/add                 controllers.AnuncioController.add()
+POST        /anuncio/add                 controllers.AnuncioController.addHandler()
+POST        /anuncio/update              controllers.AnuncioController.updateHandler()
+# prerequisito
+GET         /prerequisito/update/:uuid        controllers.PreRequisitoController.update(uuid)
+GET         /prerequisito/delete/:uuid        controllers.PreRequisitoController.delete(uuid)
+GET         /prerequisito/add/:mestre_uuid    controllers.PreRequisitoController.add(mestre_uuid)
+POST        /prerequisito/add                 controllers.PreRequisitoController.addHandler()
+POST        /prerequisito/update              controllers.PreRequisitoController.updateHandler()
+# beneficio
+GET         /beneficio/update/:uuid        controllers.BeneficioController.update(uuid)
+GET         /beneficio/delete/:uuid        controllers.BeneficioController.delete(uuid)
+GET         /beneficio/add/:mestre_uuid    controllers.BeneficioController.add(mestre_uuid)
+POST        /beneficio/add                 controllers.BeneficioController.addHandler()
+POST        /beneficio/update              controllers.BeneficioController.updateHandler()
+
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file               controllers.Assets.at(path="/public", file)

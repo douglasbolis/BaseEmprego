@@ -1,0 +1,35 @@
+@(form : play.data.Form[models.forms.DetalheForm])
+
+<ol class="breadcrumb">
+    <li><a href="/mestre">Anuncio</a></li>
+    <li class="active"><a href="#">Adicionar Pre-requisito</a></li>
+</ol>
+
+
+
+
+@main("Adicionar Pre-requisito") {
+
+<div class="col-sm-12">
+@helper.form(action = routes.BeneficioController.addHandler() ) {
+    <input type="hidden" name="mestre_uuid" value='@form("mestre_uuid").value'>
+    <div class="col-sm-4 col-sm-offset-4">
+        @helper.inputText(
+            form("nome"),
+            '_label->"Nome", 'placeholder->"Digite o nome"
+        )
+    </div>
+    <div class="col-sm-4 col-sm-offset-4">
+        <input type="submit" class="btn btn-default" value="Salvar">
+    </div>
+    }
+</div>
+
+
+
+
+
+
+
+
+}

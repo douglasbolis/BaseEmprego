@@ -1,0 +1,34 @@
+@(form : play.data.Form[models.forms.MestreForm])
+
+<ol class="breadcrumb">
+    <li><a href="/anuncio">Anuncio</a></li>
+    <li class="active"><a href="#">Adicionar</a></li>
+</ol>
+
+
+
+
+@main("Adicionar Anuncio") {
+
+<div class="col-sm-12">
+@helper.form(action = routes.AnuncioController.addHandler() ) {
+    <div class="col-sm-4 col-sm-offset-4">
+        @helper.inputText(
+            form("nome"),
+            '_label->"Nome", 'placeholder->"Digite o nome"
+        )
+    </div>
+    <div class="col-sm-4 col-sm-offset-4">
+        <input type="submit" class="btn btn-default" value="Salvar">
+    </div>
+    }
+</div>
+
+
+
+
+
+
+
+
+}

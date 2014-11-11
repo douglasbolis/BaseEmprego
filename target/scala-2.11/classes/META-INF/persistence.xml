@@ -1,0 +1,24 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <persistence-unit name="defaultPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <non-jta-data-source>DefaultDS</non-jta-data-source>
+        <class>models.Anuncio</class>
+        <class>models.Beneficio</class>
+        <class>models.PreRequisito</class>
+        <properties>
+            <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.MySQLPlatform"/>
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+            <property name="eclipselink.logging.level"       value="FINEST"/>
+            <property name="eclipselink.logging.parameters"  value="true"/>
+            <property name="eclipselink.logging.timestamp"   value="false"/>
+            <!--classe responsavel pelo log-->
+            <property name="eclipselink.logging.logger"      value="models.dao.eclipselink.SessionLogger"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>
