@@ -12718,7 +12718,7 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#apply-macro;0.13.5!apply-macro.jar
 [debug] 	[NOT REQUIRED] org.scala-lang#jline;2.10.4!jline.jar
 [debug] 	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar
-[debug] :: resolution report :: resolve 7729ms :: artifacts dl 225ms
+[debug] :: resolution report :: resolve 11140ms :: artifacts dl 355ms
 [debug] 	report for default#baseemprego-build;0.1-SNAPSHOT compile produced in /Volumes/xDevel/xdevelsistemas/play/grupo/BaseEmprego/project/target/resolution-cache/reports/default-baseemprego-build-compile.xml
 [debug] 	report for default#baseemprego-build;0.1-SNAPSHOT runtime produced in /Volumes/xDevel/xdevelsistemas/play/grupo/BaseEmprego/project/target/resolution-cache/reports/default-baseemprego-build-runtime.xml
 [debug] 	report for default#baseemprego-build;0.1-SNAPSHOT test produced in /Volumes/xDevel/xdevelsistemas/play/grupo/BaseEmprego/project/target/resolution-cache/reports/default-baseemprego-build-test.xml
@@ -12732,5 +12732,5 @@
 [debug] 	report for default#baseemprego-build;0.1-SNAPSHOT docs produced in /Volumes/xDevel/xdevelsistemas/play/grupo/BaseEmprego/project/target/resolution-cache/reports/default-baseemprego-build-docs.xml
 [debug] 	report for default#baseemprego-build;0.1-SNAPSHOT pom produced in /Volumes/xDevel/xdevelsistemas/play/grupo/BaseEmprego/project/target/resolution-cache/reports/default-baseemprego-build-pom.xml
 [debug] 	report for default#baseemprego-build;0.1-SNAPSHOT scala-tool produced in /Volumes/xDevel/xdevelsistemas/play/grupo/BaseEmprego/project/target/resolution-cache/reports/default-baseemprego-build-scala-tool.xml
-[debug] 	resolve done (7729ms resolve - 225ms download)
+[debug] 	resolve done (11140ms resolve - 355ms download)
 [info] Done updating.

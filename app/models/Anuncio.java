@@ -19,6 +19,7 @@ public class Anuncio extends models.Entity {
     public Anuncio(String nome){
         _nome = nome;
     }
+    
 
     public Anuncio() {}
 
@@ -31,9 +32,6 @@ public class Anuncio extends models.Entity {
     }
 
 
-    @Column(name = "NOME", nullable = false)
-    private String _nome;
-
     public String get_nome() {
         return _nome;
     }
@@ -41,6 +39,73 @@ public class Anuncio extends models.Entity {
     public void set_nome(String _nome) {
         this._nome = _nome;
     }
+
+
+
+
+
+    public String get_estado() {
+        return _estado;
+    }
+
+    public void set_estado(String _estado) {
+        this._estado = _estado;
+    }
+
+    public String get_cidade() {
+        return _cidade;
+    }
+
+    public void set_cidade(String _cidade) {
+        this._cidade = _cidade;
+    }
+
+    public String get_empresa() {
+        return _empresa;
+    }
+
+    public void set_empresa(String _empresa) {
+        this._empresa = _empresa;
+    }
+
+    public Float get_faixasalarialInferior() {
+        return _faixasalarialInferior;
+    }
+
+    public void set_faixasalarialInferior(Float _faixasalarialInferior) {
+        this._faixasalarialInferior = _faixasalarialInferior;
+    }
+
+    public Float get_faixasalarialSuperior() {
+        return _faixasalarialSuperior;
+    }
+
+    public void set_faixasalarialSuperior(Float _faixasalarialSuperior) {
+        this._faixasalarialSuperior = _faixasalarialSuperior;
+    }
+
+
+    @Column(name = "NOME", nullable = false)
+    private String _nome;
+
+
+    @Column(name = "UF", nullable = false)
+    private String _estado;
+
+    @Column(name = "CIDADE", nullable = false)
+    private String _cidade;
+
+    @Column(name = "EMPRESA", nullable = false)
+    private String _empresa;
+
+
+
+    @Column(name = "FAIXA_SALARIAL_INFERIOR")
+    private Float _faixasalarialInferior;
+
+
+    @Column(name = "FAIXA_SALARIAL_SUPERIOR")
+    private Float _faixasalarialSuperior;
 
 
 

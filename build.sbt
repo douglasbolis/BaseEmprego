@@ -2,10 +2,10 @@ import play.PlayJava
 
 
 
-val appName         = "exemplo-java"
+val appName         = "BaseEmprego"
 val appVersion      = "1.0alfa"
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava)
+lazy val BaseEmprego = (project in file(".")).enablePlugins(PlayJava)
 val log4j =  "log4j" % "log4j" % "1.2.17"
 
 scalaVersion := "2.11.2"
