@@ -17,8 +17,6 @@ public class MestreForm extends EntityForm {
     @Constraints.Required
     public String cidade;
 
-    @Constraints.Required
-    public String empresa;
 
 
 

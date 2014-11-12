@@ -77,6 +77,11 @@ public class AnuncioController extends Controller {
             MestreForm frm = new MestreForm();
             frm.uuid = alterar.uuid;
             frm.nome = alterar.get_nome();
+            frm.estado = alterar.get_estado();
+            frm.cidade = alterar.get_cidade();
+            //TODO fazer tratamento de mascara
+            frm.faixasalarialInferior = alterar.get_faixasalarialInferior();
+            frm.faixasalarialSuperior = alterar.get_faixasalarialSuperior();
 
             // preenchendo o formulario  com o conteudo do item solicitado
             return ok(update.render(_mestreForm.fill(frm)));
@@ -108,6 +113,10 @@ public class AnuncioController extends Controller {
 
             if (filledForm.value().isDefined())
                 dado = new Anuncio(filledForm.value().get().nome);
+                dado.set_estado(filledForm.get().estado);
+                dado.set_cidade(filledForm.get().cidade);
+                dado.set_faixasalarialInferior(filledForm.get().faixasalarialInferior);
+                dado.set_faixasalarialSuperior(filledForm.get().faixasalarialSuperior);
 
             if (dado != null){
                 new AnuncioDAO().save(dado);
@@ -139,6 +148,10 @@ public class AnuncioController extends Controller {
 
             if (dado != null){
                 dado.set_nome(filledForm.get().nome);
+                dado.set_estado(filledForm.get().estado);
+                dado.set_cidade(filledForm.get().cidade);
+                dado.set_faixasalarialInferior(filledForm.get().faixasalarialInferior);
+                dado.set_faixasalarialSuperior(filledForm.get().faixasalarialSuperior);
                 new AnuncioDAO().save(dado);
             }
 

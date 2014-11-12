@@ -19,7 +19,7 @@ public class Anuncio extends models.Entity {
     public Anuncio(String nome){
         _nome = nome;
     }
-    
+
 
     public Anuncio() {}
 
@@ -60,13 +60,6 @@ public class Anuncio extends models.Entity {
         this._cidade = _cidade;
     }
 
-    public String get_empresa() {
-        return _empresa;
-    }
-
-    public void set_empresa(String _empresa) {
-        this._empresa = _empresa;
-    }
 
     public Float get_faixasalarialInferior() {
         return _faixasalarialInferior;
@@ -95,8 +88,6 @@ public class Anuncio extends models.Entity {
     @Column(name = "CIDADE", nullable = false)
     private String _cidade;
 
-    @Column(name = "EMPRESA", nullable = false)
-    private String _empresa;
 
 
 
