@@ -1,6 +1,7 @@
 import play.PlayJava
 
 
+javaOptions ++= Seq("-Xmx128M", "-Xmx256M", "-XX:MaxPermSize=128M")
 
 val appName         = "exemplo-java"
 val appVersion      = "1.0alfa"
