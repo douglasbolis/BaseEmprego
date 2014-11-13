@@ -1,6 +1,14 @@
 import play.PlayJava
+import AssemblyKeys._
+
+javaOptions ++= Seq("-Xmx128M", "-Xmx256M", "-XX:MaxPermSize=128M")
 
 
+assemblySettings
+
+mainClass in assembly := Some("play.core.server.NettyServer")
+
+fullClasspath in assembly += Attributed.blank(PlayKeys.playPackageAssets.value)
 
 val appName         = "BaseEmprego"
 val appVersion      = "1.0alfa"
