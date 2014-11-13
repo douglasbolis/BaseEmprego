@@ -1,27 +1,3 @@
-2014-11-12 23:05:53,147 - [INFO] - from play in pool-4-thread-5 
+2014-11-13 02:49:33,123 - [INFO] - from play in pool-4-thread-4 
 Listening for HTTP on /0:0:0:0:0:0:0:0:9000
-
-2014-11-12 23:06:11,365 - [INFO] - from play in play-internal-execution-context-1 
-datasource [jdbc:mysql://xplan.czmevxqiqrsn.us-east-1.rds.amazonaws.com:3306/baseemprego] bound to JNDI as DefaultDS
-
-2014-11-12 23:06:11,371 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in play-internal-execution-context-1 
-JDBC URL = jdbc:mysql://xplan.czmevxqiqrsn.us-east-1.rds.amazonaws.com:3306/baseemprego, Username = baseemprego, partitions = 1, max (per partition) = 30, min (per partition) = 5, idle max age = 10 min, idle test period = 1 min, strategy = DEFAULT
-
-2014-11-12 23:06:27,194 - [INFO] - from play in play-internal-execution-context-1 
-database [default] connected at jdbc:mysql://xplan.czmevxqiqrsn.us-east-1.rds.amazonaws.com:3306/baseemprego
-
-2014-11-12 23:06:28,114 - [INFO] - from play in play-internal-execution-context-1 
-Application started (Dev)
-
-2014-11-12 23:07:24,285 - [INFO] - from com.jolbox.bonecp.BoneCP in pool-4-thread-5 
-Shutting down connection pool...
-
-2014-11-12 23:07:24,288 - [DEBUG] - from com.jolbox.bonecp.PoolWatchThread in BoneCP-pool-watch-thread 
-Terminating pool watch thread
-
-2014-11-12 23:07:24,290 - [INFO] - from com.jolbox.bonecp.BoneCP in pool-4-thread-5 
-Connection pool has been shutdown.
-
-2014-11-12 23:07:24,290 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in pool-4-thread-5 
-Connection pool has been shut down
 
