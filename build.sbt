@@ -16,6 +16,8 @@ val xStreamVersion = "1.2.2"
 
 val JPAVersion = "4.3.6.Final"
 
+val MysSQLVersion = "5.1.34"
+
 libraryDependencies ++= Seq(
   javaCore,
   javaJdbc,
@@ -23,6 +25,7 @@ libraryDependencies ++= Seq(
   javaJpa.exclude("org.hibernate.javax.persistence", "hibernate-jpa-2.0-api"),
   "org.eclipse.persistence" % "eclipselink" % eclipselinkVersion,
   "junit" % "junit" % "4.11" % "test" exclude("org.hamcrest", "hamcrest-core"),
+  "mysql" % "mysql-connector-java" % MysSQLVersion,
   "org.hibernate" % "hibernate-entitymanager" % JPAVersion
 )
 

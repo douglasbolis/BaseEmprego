@@ -1,8 +1,8 @@
 package controllers;
 
-import models.Beneficio;
+import models.PreRequisito;
 import models.dao.AnuncioDAO;
-import models.dao.BeneficioDAO;
+import models.dao.PreRequisitoDAO;
 import models.forms.DetalheForm;
 import play.data.Form;
 import play.mvc.Controller;
@@ -40,7 +40,7 @@ public class PreRequisitoController extends Controller {
     public static Result delete(String uuid){
         if (uuid != null && !uuid.isEmpty()){
             try{
-                (new BeneficioDAO()).delete(UUID.fromString(uuid));
+                (new PreRequisitoDAO()).delete(UUID.fromString(uuid));
             }catch (Exception e){
                 badRequest(views.html.Anuncio.index.render(new AnuncioDAO().all()));
             }
@@ -68,7 +68,7 @@ public class PreRequisitoController extends Controller {
         *
         * */
         if (uuid != null && !uuid.isEmpty()){
-            Beneficio alterar = new BeneficioDAO().findOne(UUID.fromString(uuid));
+            PreRequisito alterar = new PreRequisitoDAO().findOne(UUID.fromString(uuid));
             DetalheForm frm = new DetalheForm();
             frm.uuid = alterar.uuid;
             frm.mestre_uuid = alterar.get_anuncio().uuid;
@@ -101,14 +101,14 @@ public class PreRequisitoController extends Controller {
             );
         } else {
 
-            Beneficio dado = null;
+            PreRequisito dado = null;
 
 
             if (filledForm.value().isDefined() && filledForm.get().mestre_uuid != null) {
 
                 UUID mestre_uuid = UUID.fromString(filledForm.get().mestre_uuid);
                 if (mestre_uuid != null) {
-                    dado = new Beneficio();
+                    dado = new PreRequisito();
                     dado.set_anuncio(new AnuncioDAO().findOne(mestre_uuid));
                     dado.set_nome(filledForm.get().nome);
                 }
@@ -117,7 +117,7 @@ public class PreRequisitoController extends Controller {
 
 
             if (dado != null){
-                new BeneficioDAO().save(dado);
+                new PreRequisitoDAO().save(dado);
             }
 
             return redirect(routes.AnuncioController.index());
@@ -138,15 +138,15 @@ public class PreRequisitoController extends Controller {
             );
         } else {
 
-            Beneficio dado = null;
+            PreRequisito dado = null;
 
             if (filledForm.value().isDefined() && filledForm.value().get().uuid != null){
-                dado = new BeneficioDAO().findOne(UUID.fromString(filledForm.get().uuid));
+                dado = new PreRequisitoDAO().findOne(UUID.fromString(filledForm.get().uuid));
             }
 
             if (dado != null){
                 dado.set_nome(filledForm.get().nome);
-                new BeneficioDAO().save(dado);
+                new PreRequisitoDAO().save(dado);
             }
 
             return redirect(routes.AnuncioController.index());

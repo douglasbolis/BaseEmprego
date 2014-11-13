@@ -11,7 +11,7 @@
 @main("Adicionar Pre-requisito") {
 
 <div class="col-sm-12">
-@helper.form(action = routes.BeneficioController.addHandler() ) {
+@helper.form(action = routes.PreRequisitoController.addHandler() ) {
     <input type="hidden" name="mestre_uuid" value='@form("mestre_uuid").value'>
     <div class="col-sm-4 col-sm-offset-4">
         @helper.inputText(

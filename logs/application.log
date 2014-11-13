@@ -1,138 +1,27 @@
-2014-11-11 11:51:23,384 - [INFO] - from play in pool-4-thread-2 
+2014-11-12 23:05:53,147 - [INFO] - from play in pool-4-thread-5 
 Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 
-2014-11-11 11:51:32,061 - [INFO] - from play in play-internal-execution-context-1 
-datasource [jdbc:h2:mem:play] bound to JNDI as DefaultDS
+2014-11-12 23:06:11,365 - [INFO] - from play in play-internal-execution-context-1 
+datasource [jdbc:mysql://xplan.czmevxqiqrsn.us-east-1.rds.amazonaws.com:3306/baseemprego] bound to JNDI as DefaultDS
 
-2014-11-11 11:51:32,065 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in play-internal-execution-context-1 
-JDBC URL = jdbc:h2:mem:play;DB_CLOSE_DELAY=-1, Username = sa, partitions = 1, max (per partition) = 30, min (per partition) = 5, idle max age = 10 min, idle test period = 1 min, strategy = DEFAULT
+2014-11-12 23:06:11,371 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in play-internal-execution-context-1 
+JDBC URL = jdbc:mysql://xplan.czmevxqiqrsn.us-east-1.rds.amazonaws.com:3306/baseemprego, Username = baseemprego, partitions = 1, max (per partition) = 30, min (per partition) = 5, idle max age = 10 min, idle test period = 1 min, strategy = DEFAULT
 
-2014-11-11 11:51:32,366 - [INFO] - from play in play-internal-execution-context-1 
-database [default] connected at jdbc:h2:mem:play
+2014-11-12 23:06:27,194 - [INFO] - from play in play-internal-execution-context-1 
+database [default] connected at jdbc:mysql://xplan.czmevxqiqrsn.us-east-1.rds.amazonaws.com:3306/baseemprego
 
-2014-11-11 11:51:33,281 - [INFO] - from play in play-internal-execution-context-1 
+2014-11-12 23:06:28,114 - [INFO] - from play in play-internal-execution-context-1 
 Application started (Dev)
 
-2014-11-11 11:51:48,703 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-8 
-SELECT 1
-
-2014-11-11 11:51:48,706 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-8 
-CREATE TABLE ANUNCIO (UUID VARCHAR(255) NOT NULL, CREATED DATETIME, NOME VARCHAR(255) NOT NULL, UPDATED DATETIME, PRIMARY KEY (UUID))
-
-2014-11-11 11:51:48,708 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-8 
-SELECT 1
-
-2014-11-11 11:51:48,709 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-8 
-CREATE TABLE BENEFICIO (UUID VARCHAR(255) NOT NULL, CREATED DATETIME, NOME VARCHAR(255) NOT NULL, UPDATED DATETIME, anuncio_uuid VARCHAR(255), PRIMARY KEY (UUID))
-
-2014-11-11 11:51:48,710 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-8 
-SELECT 1
-
-2014-11-11 11:51:48,710 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-8 
-CREATE TABLE PREREQUISITO (UUID VARCHAR(255) NOT NULL, CREATED DATETIME, NOME VARCHAR(255) NOT NULL, UPDATED DATETIME, anuncio_uuid VARCHAR(255), PRIMARY KEY (UUID))
-
-2014-11-11 11:51:48,711 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-8 
-ALTER TABLE BENEFICIO ADD CONSTRAINT FK_BENEFICIO_anuncio_uuid FOREIGN KEY (anuncio_uuid) REFERENCES ANUNCIO (UUID)
-
-2014-11-11 11:51:48,720 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-8 
-ALTER TABLE PREREQUISITO ADD CONSTRAINT FK_PREREQUISITO_anuncio_uuid FOREIGN KEY (anuncio_uuid) REFERENCES ANUNCIO (UUID)
-
-2014-11-11 11:51:48,837 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-8 
-SELECT UUID, CREATED, NOME, UPDATED FROM ANUNCIO
-
-2014-11-11 11:51:55,169 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-3 
-INSERT INTO ANUNCIO (UUID, CREATED, NOME, UPDATED) VALUES ('812EB850-3113-47D2-9DC9-EFBF719910D4', 2014-11-11 11:51:55.123, 'Teste', 2014-11-11 11:51:55.123)
-
-2014-11-11 11:51:55,192 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-12 
-SELECT UUID, CREATED, NOME, UPDATED FROM ANUNCIO
-
-2014-11-11 11:51:55,208 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-12 
-SELECT UUID, CREATED, NOME, UPDATED, anuncio_uuid FROM BENEFICIO WHERE (anuncio_uuid = '812EB850-3113-47D2-9DC9-EFBF719910D4')
-
-2014-11-11 11:51:55,213 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-12 
-SELECT UUID, CREATED, NOME, UPDATED, anuncio_uuid FROM PREREQUISITO WHERE (anuncio_uuid = '812EB850-3113-47D2-9DC9-EFBF719910D4')
-
-2014-11-11 11:52:25,468 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-8 
-SELECT UUID, CREATED, NOME, UPDATED FROM ANUNCIO WHERE (UUID = '812EB850-3113-47D2-9DC9-EFBF719910D4')
-
-2014-11-11 11:52:25,489 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-13 
-INSERT INTO BENEFICIO (UUID, CREATED, NOME, UPDATED, anuncio_uuid) VALUES ('12369342-EE3B-4517-AFFE-9E503A484B5F', 2014-11-11 11:52:25.469, 'fff', 2014-11-11 11:52:25.469, '812EB850-3113-47D2-9DC9-EFBF719910D4')
-
-2014-11-11 11:52:25,500 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-13 
-SELECT UUID, CREATED, NOME, UPDATED FROM ANUNCIO
-
-2014-11-11 11:52:25,502 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-13 
-SELECT UUID, CREATED, NOME, UPDATED, anuncio_uuid FROM BENEFICIO WHERE (anuncio_uuid = '812EB850-3113-47D2-9DC9-EFBF719910D4')
-
-2014-11-11 11:52:25,504 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-13 
-SELECT UUID, CREATED, NOME, UPDATED, anuncio_uuid FROM PREREQUISITO WHERE (anuncio_uuid = '812EB850-3113-47D2-9DC9-EFBF719910D4')
-
-2014-11-11 11:52:30,714 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-16 
-SELECT UUID, CREATED, NOME, UPDATED FROM ANUNCIO WHERE (UUID = '812EB850-3113-47D2-9DC9-EFBF719910D4')
-
-2014-11-11 11:52:30,716 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-16 
-INSERT INTO BENEFICIO (UUID, CREATED, NOME, UPDATED, anuncio_uuid) VALUES ('B850EBFF-AF75-44CE-8D38-577B7B213C63', 2014-11-11 11:52:30.714, 'ghghghhg', 2014-11-11 11:52:30.714, '812EB850-3113-47D2-9DC9-EFBF719910D4')
-
-2014-11-11 11:52:30,725 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-8 
-SELECT UUID, CREATED, NOME, UPDATED FROM ANUNCIO
-
-2014-11-11 11:52:30,727 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-8 
-SELECT UUID, CREATED, NOME, UPDATED, anuncio_uuid FROM BENEFICIO WHERE (anuncio_uuid = '812EB850-3113-47D2-9DC9-EFBF719910D4')
-
-2014-11-11 11:52:30,731 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-8 
-SELECT UUID, CREATED, NOME, UPDATED, anuncio_uuid FROM PREREQUISITO WHERE (anuncio_uuid = '812EB850-3113-47D2-9DC9-EFBF719910D4')
-
-2014-11-11 11:55:48,911 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-18 
-SELECT UUID, CREATED, NOME, UPDATED, anuncio_uuid FROM BENEFICIO WHERE (UUID = 'B850EBFF-AF75-44CE-8D38-577B7B213C63')
-
-2014-11-11 11:55:58,095 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-21 
-SELECT UUID, CREATED, NOME, UPDATED, anuncio_uuid FROM BENEFICIO WHERE (UUID = 'B850EBFF-AF75-44CE-8D38-577B7B213C63')
-
-2014-11-11 11:55:58,098 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-21 
-DELETE FROM BENEFICIO WHERE (UUID = 'B850EBFF-AF75-44CE-8D38-577B7B213C63')
-
-2014-11-11 11:55:58,102 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-21 
-SELECT UUID, CREATED, NOME, UPDATED FROM ANUNCIO
-
-2014-11-11 11:55:58,108 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-21 
-SELECT UUID, CREATED, NOME, UPDATED, anuncio_uuid FROM BENEFICIO WHERE (anuncio_uuid = '812EB850-3113-47D2-9DC9-EFBF719910D4')
-
-2014-11-11 11:55:58,112 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-21 
-SELECT UUID, CREATED, NOME, UPDATED, anuncio_uuid FROM PREREQUISITO WHERE (anuncio_uuid = '812EB850-3113-47D2-9DC9-EFBF719910D4')
-
-2014-11-11 11:55:59,183 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-26 
-SELECT UUID, CREATED, NOME, UPDATED, anuncio_uuid FROM BENEFICIO WHERE (UUID = '12369342-EE3B-4517-AFFE-9E503A484B5F')
-
-2014-11-11 11:55:59,185 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-26 
-DELETE FROM BENEFICIO WHERE (UUID = '12369342-EE3B-4517-AFFE-9E503A484B5F')
-
-2014-11-11 11:55:59,187 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-26 
-SELECT UUID, CREATED, NOME, UPDATED FROM ANUNCIO
-
-2014-11-11 11:55:59,188 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-26 
-SELECT UUID, CREATED, NOME, UPDATED, anuncio_uuid FROM BENEFICIO WHERE (anuncio_uuid = '812EB850-3113-47D2-9DC9-EFBF719910D4')
-
-2014-11-11 11:55:59,191 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-26 
-SELECT UUID, CREATED, NOME, UPDATED, anuncio_uuid FROM PREREQUISITO WHERE (anuncio_uuid = '812EB850-3113-47D2-9DC9-EFBF719910D4')
-
-2014-11-11 11:56:01,595 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-22 
-SELECT UUID, CREATED, NOME, UPDATED FROM ANUNCIO WHERE (UUID = '812EB850-3113-47D2-9DC9-EFBF719910D4')
-
-2014-11-11 11:56:01,600 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-22 
-DELETE FROM ANUNCIO WHERE (UUID = '812EB850-3113-47D2-9DC9-EFBF719910D4')
-
-2014-11-11 11:56:01,603 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-22 
-SELECT UUID, CREATED, NOME, UPDATED FROM ANUNCIO
-
-2014-11-11 13:35:38,742 - [INFO] - from com.jolbox.bonecp.BoneCP in pool-4-thread-2 
+2014-11-12 23:07:24,285 - [INFO] - from com.jolbox.bonecp.BoneCP in pool-4-thread-5 
 Shutting down connection pool...
 
-2014-11-11 13:35:38,750 - [DEBUG] - from com.jolbox.bonecp.PoolWatchThread in BoneCP-pool-watch-thread 
+2014-11-12 23:07:24,288 - [DEBUG] - from com.jolbox.bonecp.PoolWatchThread in BoneCP-pool-watch-thread 
 Terminating pool watch thread
 
-2014-11-11 13:35:38,753 - [INFO] - from com.jolbox.bonecp.BoneCP in pool-4-thread-2 
+2014-11-12 23:07:24,290 - [INFO] - from com.jolbox.bonecp.BoneCP in pool-4-thread-5 
 Connection pool has been shutdown.
 
-2014-11-11 13:35:38,753 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in pool-4-thread-2 
+2014-11-12 23:07:24,290 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in pool-4-thread-5 
 Connection pool has been shut down
 

@@ -18,12 +18,26 @@
             @for(itm_mestre <- lista){
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                    <a class="" href="/anuncio/update/@itm_mestre.uuid">@itm_mestre.get_nome()</a>
-                    <p>@itm_mestre.get_estado()</p>
-                    <p>@itm_mestre.get_cidade()</p>
-                    <a class="btn btn-danger col-sm-offset-11" href="/anuncio/delete/@itm_mestre.uuid">Excluir</a>
+
+                        <a class="col-sm-10" href="/anuncio/update/@itm_mestre.uuid">@itm_mestre.get_nome()</a>
+                        <a class="btn btn-danger col-sm-2" href="/anuncio/delete/@itm_mestre.uuid">Excluir</a>
+                        <br/>
+                        <br/>
                     </div>
                     <div class="panel-body">
+
+                            <span class="col-sm-4">Estado: @itm_mestre.get_estado()</span>
+
+                            @if(itm_mestre.get_faixasalarialInferior() != null && itm_mestre.get_faixasalarialSuperior() != null){
+                                <span class="col-sm-4">Cidade: @itm_mestre.get_cidade()</span>
+                                <span class="col-sm-4">Salário de R$ @itm_mestre.get_faixasalarialInferior() a R$ @itm_mestre.get_faixasalarialSuperior()</span>
+
+
+                            }else{
+                                <span class="col-sm-8">Cidade: @itm_mestre.get_cidade()</span>
+                            }
+
+
                         <a class="btn btn-primary" href="/beneficio/add/@itm_mestre.uuid">Adicionar Benefício</a>
                         <ul class="list-group">
                             <div class="panel panel-default">
@@ -40,15 +54,15 @@
                         </ul>
                     </div>
                     <div class="panel-body">
-                        <a class="btn btn-primary" href="/beneficio/add/@itm_mestre.uuid">Adicionar Requisito</a>
+                        <a class="btn btn-primary" href="/prerequisito/add/@itm_mestre.uuid">Adicionar Requisito</a>
                         <ul class="list-group">
                             <div class="panel panel-default">
                                 <div class="panel-heading">Detalhes</div>
                                 <div class="panel-body">
                                 @for(itm_requisito <- itm_mestre.get_prerequisitos()){
                                     <li class="list-group-item">
-                                        <a class="col-sm-6" href="/beneficio/update/@itm_requisito.uuid">@itm_requisito.get_nome()</a>
-                                        <a class="btn btn-danger col-sm-offset-5" href="/beneficio/delete/@itm_requisito.uuid">Excluir</a>
+                                        <a class="col-sm-6" href="/prerequisito/update/@itm_requisito.uuid">@itm_requisito.get_nome()</a>
+                                        <a class="btn btn-danger col-sm-offset-5" href="/prerequisito/delete/@itm_requisito.uuid">Excluir</a>
                                     </li>
                                 }
                                 </div>

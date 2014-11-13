@@ -17,8 +17,32 @@
             form("nome"),
             '_value->form("nome").value(),
             '_label->"Nome",
-            'placeholder->"Digite o nome"
+            'placeholder->"Digite a Empresa"
         )
+    </div>
+    <div class="col-sm-4 col-sm-offset-4">
+    @helper.inputText(
+        form("estado"),
+        '_label->"UF", 'placeholder->"Digite a Sigla da UF"
+    )
+    </div>
+    <div class="col-sm-4 col-sm-offset-4">
+    @helper.inputText(
+        form("cidade"),
+        '_label->"Cidade", 'placeholder->"Digite a Cidade"
+    )
+    </div>
+    <div class="col-sm-4 col-sm-offset-4">
+    @helper.inputText(
+        form("faixasalarialInferior"),
+        '_label->"Salario Baixo", 'placeholder->"Digite a Faixa Salarial inferior"
+    )
+    </div>
+    <div class="col-sm-4 col-sm-offset-4">
+    @helper.inputText(
+        form("faixasalarialSuperior"),
+        '_label->"Salario Baixo", 'placeholder->"Digite a Faixa Salarial inferior"
+    )
     </div>
     <div class="col-sm-4 col-sm-offset-4">
         <input type="submit" class="btn btn-default" value="Salvar">

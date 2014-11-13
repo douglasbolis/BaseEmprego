@@ -9,4 +9,6 @@ public class AnuncioDAO extends EntityDAO<Anuncio> {
     public AnuncioDAO() {
         super(Anuncio.class);
     }
+
+
 }

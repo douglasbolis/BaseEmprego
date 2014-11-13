@@ -24,6 +24,11 @@ public class AnuncioController extends Controller {
         return ok(views.html.Anuncio.index.render(new AnuncioDAO().all()));
     }
 
+    @play.db.jpa.Transactional
+    public static Result indexuf(String UF) {
+        return ok(views.html.Anuncio.index.render(new AnuncioDAO().findMany("_estado",UF.toUpperCase())));
+    }
+
 
 
 
@@ -83,6 +88,8 @@ public class AnuncioController extends Controller {
             frm.faixasalarialInferior = alterar.get_faixasalarialInferior();
             frm.faixasalarialSuperior = alterar.get_faixasalarialSuperior();
 
+
+
             // preenchendo o formulario  com o conteudo do item solicitado
             return ok(update.render(_mestreForm.fill(frm)));
 
@@ -111,12 +118,23 @@ public class AnuncioController extends Controller {
             Anuncio dado = null;
 
 
-            if (filledForm.value().isDefined())
+            if (filledForm.value().isDefined()) {
                 dado = new Anuncio(filledForm.value().get().nome);
-                dado.set_estado(filledForm.get().estado);
-                dado.set_cidade(filledForm.get().cidade);
+                dado.set_estado(filledForm.get().estado.toUpperCase());
+                dado.set_cidade(filledForm.get().cidade.toUpperCase());
                 dado.set_faixasalarialInferior(filledForm.get().faixasalarialInferior);
                 dado.set_faixasalarialSuperior(filledForm.get().faixasalarialSuperior);
+
+                if  (filledForm.get().faixasalarialInferior == null && filledForm.get().faixasalarialSuperior != null)
+                    dado.set_faixasalarialInferior(dado.get_faixasalarialSuperior());
+
+                if  (filledForm.get().faixasalarialSuperior == null && filledForm.get().faixasalarialInferior != null)
+                    dado.set_faixasalarialSuperior(dado.get_faixasalarialInferior());
+
+            }
+
+
+
 
             if (dado != null){
                 new AnuncioDAO().save(dado);
@@ -148,8 +166,8 @@ public class AnuncioController extends Controller {
 
             if (dado != null){
                 dado.set_nome(filledForm.get().nome);
-                dado.set_estado(filledForm.get().estado);
-                dado.set_cidade(filledForm.get().cidade);
+                dado.set_estado(filledForm.get().estado.toUpperCase());
+                dado.set_cidade(filledForm.get().cidade.toUpperCase());
                 dado.set_faixasalarialInferior(filledForm.get().faixasalarialInferior);
                 dado.set_faixasalarialSuperior(filledForm.get().faixasalarialSuperior);
                 new AnuncioDAO().save(dado);
