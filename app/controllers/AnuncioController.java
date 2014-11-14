@@ -1,12 +1,19 @@
 package controllers;
 
 import models.Anuncio;
+import models.Beneficio;
+import models.PreRequisito;
 import models.dao.AnuncioDAO;
+import models.dao.BeneficioDAO;
+import models.dao.PreRequisitoDAO;
 import models.forms.MestreForm;
 import play.data.Form;
+import play.libs.Json;
 import play.mvc.*;
 import views.html.Anuncio.add;
 import views.html.Anuncio.update;
+
+import java.util.List;
 import java.util.UUID;
 
 
@@ -19,15 +26,32 @@ public class AnuncioController extends Controller {
 
     final static Form<MestreForm> _mestreForm = Form.form(MestreForm.class);
 
-    @play.db.jpa.Transactional
-    public static Result index() {
-        return ok(views.html.Anuncio.index.render(new AnuncioDAO().all()));
-    }
+//    @play.db.jpa.Transactional
+//    public static Result index() {
+//        return ok(views.html.Anuncio.index.render(new AnuncioDAO().all()));
+//    }
 
     @play.db.jpa.Transactional
-    public static Result indexuf(String UF) {
-        return ok(views.html.Anuncio.index.render(new AnuncioDAO().findMany("_estado",UF.toUpperCase())));
+    public static  Result index(){
+        List<Anuncio> anuncios = new AnuncioDAO().all();
+
+        return ok(Json.toJson(anuncios));
     }
+
+
+    @play.db.jpa.Transactional
+    public static Result detalhe(String uuid){
+        Anuncio anuncio  = new AnuncioDAO().findOne(UUID.fromString(uuid));
+        List<Beneficio> lstBeneficio = new BeneficioDAO().findMany("_anuncio",anuncio.uuid);
+        List<PreRequisito> lstPreRequisito = new PreRequisitoDAO().findMany("_anuncio",anuncio.uuid);
+        return ok (views.html.Anuncio.detalhe.render(anuncio,lstBeneficio,lstPreRequisito));
+
+    }
+
+//    @play.db.jpa.Transactional
+//    public static Result indexuf(String UF) {
+//        return ok(views.html.Anuncio.index.render(new AnuncioDAO().findMany("_estado",UF.toUpperCase())));
+//    }
 
 
 
@@ -46,24 +70,24 @@ public class AnuncioController extends Controller {
     }
 
 
-    @play.db.jpa.Transactional
-    public static Result delete(String uuid){
-        if (uuid != null && !uuid.isEmpty()){
-            try{
-                (new AnuncioDAO()).delete(UUID.fromString(uuid));
-            }catch (Exception e){
-                badRequest(views.html.Anuncio.index.render(new AnuncioDAO().all()));
-            }
-
-            return index();
-
-        }else
-        {
-            return badRequest(views.html.Anuncio.index.render(new AnuncioDAO().all()));
-
-        }
-
-    }
+//    @play.db.jpa.Transactional
+//    public static Result delete(String uuid){
+//        if (uuid != null && !uuid.isEmpty()){
+//            try{
+//                (new AnuncioDAO()).delete(UUID.fromString(uuid));
+//            }catch (Exception e){
+//                badRequest(views.html.Anuncio.index.render(new AnuncioDAO().all()));
+//            }
+//
+//            return index();
+//
+//        }else
+//        {
+//            return badRequest(views.html.Anuncio.index.render(new AnuncioDAO().all()));
+//
+//        }
+//
+//    }
 
 
 
@@ -137,10 +161,10 @@ public class AnuncioController extends Controller {
 
 
             if (dado != null){
-                new AnuncioDAO().save(dado);
+                dado = new AnuncioDAO().save(dado);
             }
 
-            return redirect(routes.AnuncioController.index());
+            return redirect(routes.AnuncioController.detalhe(dado.uuid));
         }
 
     }
@@ -173,7 +197,7 @@ public class AnuncioController extends Controller {
                 new AnuncioDAO().save(dado);
             }
 
-            return redirect(routes.AnuncioController.index());
+            return redirect(routes.AnuncioController.detalhe(dado.uuid));
         }
 
     }

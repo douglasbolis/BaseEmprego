@@ -40,17 +40,23 @@ public class BeneficioController extends Controller {
     @play.db.jpa.Transactional
     public static Result delete(String uuid){
         if (uuid != null && !uuid.isEmpty()){
+
             try{
-                (new BeneficioDAO()).delete(UUID.fromString(uuid));
+                BeneficioDAO dao = new BeneficioDAO();
+                Beneficio item = dao.findOne(UUID.fromString(uuid));
+                dao.delete(UUID.fromString(item.uuid));
+
+                return AnuncioController.detalhe(item.get_anuncio().uuid);
+
             }catch (Exception e){
-                badRequest(views.html.Anuncio.index.render(new AnuncioDAO().all()));
+                return badRequest(views.html.error.render("Não foi possível encontrar o registro"));
             }
 
-            return AnuncioController.index();
+
 
         }else
         {
-            return badRequest(views.html.Anuncio.index.render(new AnuncioDAO().all()));
+            return badRequest(views.html.error.render("Não foi informado na requisicao o registro que deseja excluir"));
 
         }
 
@@ -121,7 +127,7 @@ public class BeneficioController extends Controller {
                 new BeneficioDAO().save(dado);
             }
 
-            return redirect(routes.AnuncioController.index());
+            return redirect(routes.AnuncioController.detalhe(filledForm.get().mestre_uuid));
         }
 
     }
@@ -150,7 +156,7 @@ public class BeneficioController extends Controller {
                 new BeneficioDAO().save(dado);
             }
 
-            return redirect(routes.AnuncioController.index());
+            return redirect(routes.AnuncioController.detalhe(filledForm.get().mestre_uuid));
         }
 
     }

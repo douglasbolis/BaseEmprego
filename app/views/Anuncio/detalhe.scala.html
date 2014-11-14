@@ -1,4 +1,4 @@
-@(anuncio : Anuncio)
+@(anuncio : Anuncio, beneficios : java.util.List[Beneficio], prerequisitos: java.util.List[PreRequisito])
 @import play.api.mvc.Flash
 
 <ol class="breadcrumb">
@@ -10,7 +10,7 @@
 
 @main("Anuncios") {
 
-        <a class="btn btn-primary" href="/anuncio/add">Adicionar Anuncio</a>
+        <a class="btn btn-success" href="/anuncio">Voltar Para Lista</a>
         <br/>
         <div class="panel panel-default">
             <div class="panel-heading">Anuncio</div>
@@ -43,7 +43,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">Detalhes</div>
                                 <div class="panel-body">
-                                @for(itm_beneficio <- anuncio.get_beneficios()){
+                                @for(itm_beneficio <- beneficios){
                                     <li class="list-group-item">
                                         <a class="col-sm-6" href="/beneficio/update/@itm_beneficio.uuid">@itm_beneficio.get_nome()</a>
                                         <a class="btn btn-danger col-sm-offset-5" href="/beneficio/delete/@itm_beneficio.uuid">Excluir</a>
@@ -59,7 +59,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">Detalhes</div>
                                 <div class="panel-body">
-                                @for(itm_requisito <- anuncio.get_prerequisitos()){
+                                @for(itm_requisito <- prerequisitos){
                                     <li class="list-group-item">
                                         <a class="col-sm-6" href="/prerequisito/update/@itm_requisito.uuid">@itm_requisito.get_nome()</a>
                                         <a class="btn btn-danger col-sm-offset-5" href="/prerequisito/delete/@itm_requisito.uuid">Excluir</a>

@@ -5,10 +5,12 @@
 # Home page
 GET         /                                     controllers.Application.index()
 GET         /anuncio                              controllers.AnuncioController.index()
-GET         /anuncio/uf/:uf                          controllers.AnuncioController.indexuf(uf)
+GET         /anuncio/index                        controllers.AnuncioController.index()
+#GET         /anuncio/uf/:uf                       controllers.AnuncioController.indexuf(uf)
+GET         /anuncio/detalhe/:uuid                controllers.AnuncioController.detalhe(uuid)
 # mestre
 GET         /anuncio/update/:uuid                 controllers.AnuncioController.update(uuid)
-GET         /anuncio/delete/:uuid                 controllers.AnuncioController.delete(uuid)
+#GET         /anuncio/delete/:uuid                 controllers.AnuncioController.delete(uuid)
 GET         /anuncio/add                          controllers.AnuncioController.add()
 POST        /anuncio/add                          controllers.AnuncioController.addHandler()
 POST        /anuncio/update                       controllers.AnuncioController.updateHandler()

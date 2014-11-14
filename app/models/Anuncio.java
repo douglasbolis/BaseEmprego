@@ -23,13 +23,14 @@ public class Anuncio extends models.Entity {
 
     public Anuncio() {}
 
-    public List<Beneficio> get_beneficios(){
-        return new BeneficioDAO().findMany("_anuncio",this);
-    }
-
-    public List<PreRequisito> get_prerequisitos(){
-        return new PreRequisitoDAO().findMany("_anuncio",this);
-    }
+// quando converte para json ocorre erro de recursividade
+//    public List<Beneficio> get_beneficios(){
+//        return new BeneficioDAO().findMany("_anuncio",this);
+//    }
+//
+//    public List<PreRequisito> get_prerequisitos(){
+//        return new PreRequisitoDAO().findMany("_anuncio",this);
+//    }
 
 
     public String get_nome() {
