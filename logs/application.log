@@ -1,27 +1,42 @@
-2014-11-12 23:05:53,147 - [INFO] - from play in pool-4-thread-5 
+2014-11-13 23:52:16,884 - [INFO] - from play in pool-4-thread-1 
 Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 
-2014-11-12 23:06:11,365 - [INFO] - from play in play-internal-execution-context-1 
-datasource [jdbc:mysql://xplan.czmevxqiqrsn.us-east-1.rds.amazonaws.com:3306/baseemprego] bound to JNDI as DefaultDS
+2014-11-13 23:52:21,319 - [INFO] - from play in play-internal-execution-context-1 
+datasource [jdbc:h2:mem:play] bound to JNDI as DefaultDS
 
-2014-11-12 23:06:11,371 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in play-internal-execution-context-1 
-JDBC URL = jdbc:mysql://xplan.czmevxqiqrsn.us-east-1.rds.amazonaws.com:3306/baseemprego, Username = baseemprego, partitions = 1, max (per partition) = 30, min (per partition) = 5, idle max age = 10 min, idle test period = 1 min, strategy = DEFAULT
+2014-11-13 23:52:21,325 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in play-internal-execution-context-1 
+JDBC URL = jdbc:h2:mem:play;DB_CLOSE_DELAY=-1, Username = sa, partitions = 1, max (per partition) = 30, min (per partition) = 5, idle max age = 10 min, idle test period = 1 min, strategy = DEFAULT
 
-2014-11-12 23:06:27,194 - [INFO] - from play in play-internal-execution-context-1 
-database [default] connected at jdbc:mysql://xplan.czmevxqiqrsn.us-east-1.rds.amazonaws.com:3306/baseemprego
+2014-11-13 23:52:21,651 - [INFO] - from play in play-internal-execution-context-1 
+database [default] connected at jdbc:h2:mem:play
 
-2014-11-12 23:06:28,114 - [INFO] - from play in play-internal-execution-context-1 
+2014-11-13 23:52:23,333 - [INFO] - from play in play-internal-execution-context-1 
 Application started (Dev)
 
-2014-11-12 23:07:24,285 - [INFO] - from com.jolbox.bonecp.BoneCP in pool-4-thread-5 
-Shutting down connection pool...
+2014-11-13 23:52:28,493 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+SELECT 1
 
-2014-11-12 23:07:24,288 - [DEBUG] - from com.jolbox.bonecp.PoolWatchThread in BoneCP-pool-watch-thread 
-Terminating pool watch thread
+2014-11-13 23:52:28,499 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+CREATE TABLE ANUNCIO (UUID VARCHAR(255) NOT NULL, CIDADE VARCHAR(255) NOT NULL, CREATED DATETIME, UF VARCHAR(255) NOT NULL, FAIXA_SALARIAL_INFERIOR FLOAT, FAIXA_SALARIAL_SUPERIOR FLOAT, NOME VARCHAR(255) NOT NULL, UPDATED DATETIME, PRIMARY KEY (UUID))
 
-2014-11-12 23:07:24,290 - [INFO] - from com.jolbox.bonecp.BoneCP in pool-4-thread-5 
-Connection pool has been shutdown.
+2014-11-13 23:52:28,503 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+SELECT 1
 
-2014-11-12 23:07:24,290 - [DEBUG] - from com.jolbox.bonecp.BoneCPDataSource in pool-4-thread-5 
-Connection pool has been shut down
+2014-11-13 23:52:28,504 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+CREATE TABLE BENEFICIO (UUID VARCHAR(255) NOT NULL, CREATED DATETIME, NOME VARCHAR(255) NOT NULL, UPDATED DATETIME, anuncio_uuid VARCHAR(255), PRIMARY KEY (UUID))
+
+2014-11-13 23:52:28,506 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+SELECT 1
+
+2014-11-13 23:52:28,507 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+CREATE TABLE PREREQUISITO (UUID VARCHAR(255) NOT NULL, CREATED DATETIME, NOME VARCHAR(255) NOT NULL, UPDATED DATETIME, anuncio_uuid VARCHAR(255), PRIMARY KEY (UUID))
+
+2014-11-13 23:52:28,508 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+ALTER TABLE BENEFICIO ADD CONSTRAINT FK_BENEFICIO_anuncio_uuid FOREIGN KEY (anuncio_uuid) REFERENCES ANUNCIO (UUID)
+
+2014-11-13 23:52:28,520 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+ALTER TABLE PREREQUISITO ADD CONSTRAINT FK_PREREQUISITO_anuncio_uuid FOREIGN KEY (anuncio_uuid) REFERENCES ANUNCIO (UUID)
+
+2014-11-13 23:52:28,719 - [DEBUG] - from com.jolbox.bonecp.PreparedStatementHandle in play-akka.actor.default-dispatcher-9 
+SELECT UUID, CIDADE, CREATED, UF, FAIXA_SALARIAL_INFERIOR, FAIXA_SALARIAL_SUPERIOR, NOME, UPDATED FROM ANUNCIO
 

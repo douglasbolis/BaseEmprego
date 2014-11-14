@@ -3,6 +3,8 @@ package controllers;
 import models.Beneficio;
 import models.dao.BeneficioDAO;
 import models.dao.AnuncioDAO;
+import models.dao.TipoBeneficioDAO;
+import models.forms.BeneficioForm;
 import models.forms.DetalheForm;
 
 import play.data.Form;
@@ -21,7 +23,7 @@ import java.util.UUID;
 public class BeneficioController extends Controller {
 
 
-    final static Form<DetalheForm> _detalheForm = Form.form(DetalheForm.class);
+    final static Form<BeneficioForm> _detalheForm = Form.form(BeneficioForm.class);
 
 
 
@@ -70,17 +72,18 @@ public class BeneficioController extends Controller {
         * */
         if (uuid != null && !uuid.isEmpty()){
             Beneficio alterar = new BeneficioDAO().findOne(UUID.fromString(uuid));
-            DetalheForm frm = new DetalheForm();
+            BeneficioForm frm = new BeneficioForm();
             frm.uuid = alterar.uuid;
             frm.mestre_uuid = alterar.get_anuncio().uuid;
-            frm.nome = alterar.get_nome();
+            frm.ListtpBeneficio = new TipoBeneficioDAO().all();
+            frm.tpBeneficio = alterar.get_tpBeneficio();
 
             // preenchendo o formulario  com o conteudo do item solicitado
             return ok(update.render(_detalheForm.fill(frm)));
 
         }else
         {
-            DetalheForm frm = new DetalheForm();
+            BeneficioForm frm = new BeneficioForm();
             frm.mestre_uuid = mestre_uuid;
             return ok(add.render(_detalheForm.fill(frm)));
         }
@@ -95,7 +98,7 @@ public class BeneficioController extends Controller {
 
     @play.db.jpa.Transactional
     public static Result addHandler(){
-        Form<DetalheForm> filledForm = _detalheForm.bindFromRequest();
+        Form<BeneficioForm> filledForm = _detalheForm.bindFromRequest();
         if(filledForm.hasErrors()) {
             return badRequest(
                     add.render(filledForm)
@@ -109,9 +112,8 @@ public class BeneficioController extends Controller {
 
                 UUID mestre_uuid = UUID.fromString(filledForm.get().mestre_uuid);
                 if (mestre_uuid != null) {
-                    dado = new Beneficio();
+                    dado = new Beneficio(filledForm.get().tpBeneficio);
                     dado.set_anuncio(new AnuncioDAO().findOne(mestre_uuid));
-                    dado.set_nome(filledForm.get().nome);
                 }
             }
 
@@ -131,7 +133,7 @@ public class BeneficioController extends Controller {
 
     @play.db.jpa.Transactional
     public static Result updateHandler(){
-        Form<DetalheForm> filledForm = _detalheForm.bindFromRequest();
+        Form<BeneficioForm> filledForm = _detalheForm.bindFromRequest();
         if(filledForm.hasErrors()) {
             return badRequest(
                     update.render(filledForm)
@@ -146,7 +148,7 @@ public class BeneficioController extends Controller {
             }
 
             if (dado != null){
-                dado.set_nome(filledForm.get().nome);
+                dado.set_tpBeneficio(filledForm.get().tpBeneficio);
                 new BeneficioDAO().save(dado);
             }
 

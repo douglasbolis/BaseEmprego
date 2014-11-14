@@ -7,23 +7,22 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class PreRequisito extends models.Entity {
-    public PreRequisito(String nome){
-        _nome = nome;
+    public PreRequisito(TipoPreRequisito tpPreRequisito){
+        _tpPreRequisito = tpPreRequisito;
     }
 
-    public PreRequisito() {}
 
-
-    @Column(name = "NOME", nullable = false)
-    private String _nome;
-
-    public String get_nome() {
-        return _nome;
+    public TipoPreRequisito get_tpPreRequisito() {
+        return _tpPreRequisito;
     }
 
-    public void set_nome(String _nome) {
-        this._nome = _nome;
+    public void set_tpPreRequisito(TipoPreRequisito _tpPreRequisito) {
+        this._tpPreRequisito = _tpPreRequisito;
     }
+
+    @ManyToOne
+    @JoinColumn(name="tipo_prerequisito_uuid")
+    private TipoPreRequisito _tpPreRequisito;
 
 
     public Anuncio get_anuncio() {
