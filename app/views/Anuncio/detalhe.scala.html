@@ -1,0 +1,77 @@
+@(anuncio : Anuncio)
+@import play.api.mvc.Flash
+
+<ol class="breadcrumb">
+    <li class="active"><a href="/anuncio">Anuncio</a></li>
+</ol>
+
+
+
+
+@main("Anuncios") {
+
+        <a class="btn btn-primary" href="/anuncio/add">Adicionar Anuncio</a>
+        <br/>
+        <div class="panel panel-default">
+            <div class="panel-heading">Anuncio</div>
+            <div class="panel-body">
+            
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+
+                        <a class="col-sm-10" href="/anuncio/update/@anuncio.uuid">@anuncio.get_nome()</a>
+                        <a class="btn btn-danger col-sm-2" href="/anuncio/delete/@anuncio.uuid">Excluir</a>
+                        <br/>
+                        <br/>
+                    </div>
+                    <div class="panel-body">
+
+                            <span class="col-sm-4">Estado: @anuncio.get_estado()</span>
+
+                            @if(anuncio.get_faixasalarialInferior() != null && anuncio.get_faixasalarialSuperior() != null){
+                                <span class="col-sm-4">Cidade: @anuncio.get_cidade()</span>
+                                <span class="col-sm-4">Salário de R$ @anuncio.get_faixasalarialInferior() a R$ @anuncio.get_faixasalarialSuperior()</span>
+
+
+                            }else{
+                                <span class="col-sm-8">Cidade: @anuncio.get_cidade()</span>
+                            }
+
+
+                        <a class="btn btn-primary" href="/beneficio/add/@anuncio.uuid">Adicionar Benefício</a>
+                        <ul class="list-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Detalhes</div>
+                                <div class="panel-body">
+                                @for(itm_beneficio <- anuncio.get_beneficios()){
+                                    <li class="list-group-item">
+                                        <a class="col-sm-6" href="/beneficio/update/@itm_beneficio.uuid">@itm_beneficio.get_nome()</a>
+                                        <a class="btn btn-danger col-sm-offset-5" href="/beneficio/delete/@itm_beneficio.uuid">Excluir</a>
+                                    </li>
+                                }
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <a class="btn btn-primary" href="/prerequisito/add/@anuncio.uuid">Adicionar Requisito</a>
+                        <ul class="list-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Detalhes</div>
+                                <div class="panel-body">
+                                @for(itm_requisito <- anuncio.get_prerequisitos()){
+                                    <li class="list-group-item">
+                                        <a class="col-sm-6" href="/prerequisito/update/@itm_requisito.uuid">@itm_requisito.get_nome()</a>
+                                        <a class="btn btn-danger col-sm-offset-5" href="/prerequisito/delete/@itm_requisito.uuid">Excluir</a>
+                                    </li>
+                                }
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+}
