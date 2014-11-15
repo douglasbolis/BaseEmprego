@@ -3,6 +3,7 @@ import AssemblyKeys._
 
 javaOptions ++= Seq("-Xmx128M", "-Xmx256M", "-XX:MaxPermSize=128M")
 
+javaOptions ++= Seq("-Xmx128M", "-Xmx256M", "-XX:MaxPermSize=128M")
 
 assemblySettings
 
