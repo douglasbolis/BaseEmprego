@@ -14,4 +14,5 @@ dist
 /RUNNING_PID
 /.settings
 /conf/application.prod.conf
-/logs/appication.log
+.idea_modules
+project/project/target
