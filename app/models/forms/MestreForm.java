@@ -11,15 +11,23 @@ public class MestreForm extends EntityForm {
     @Constraints.Required
     public String nome;
 
+
+    public String area;
+
+
+    public String escolaridadeMinima;
+
+
+
     @Constraints.Required
     public String estado;
 
     @Constraints.Required
     public String cidade;
 
-    public String escolaridaMinima;
 
-    public String area;
+
+
 
     public Float faixasalarialInferior;
 

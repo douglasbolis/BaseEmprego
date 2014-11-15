@@ -128,6 +128,8 @@ public class AnuncioController extends Controller {
             frm.nome = alterar.get_nome();
             frm.estado = alterar.get_estado();
             frm.cidade = alterar.get_cidade();
+            frm.area = alterar.get_area();
+            frm.escolaridadeMinima = alterar.get_escolaridadeMinima();
             frm.faixasalarialInferior = alterar.get_faixasalarialInferior();
             frm.faixasalarialSuperior = alterar.get_faixasalarialSuperior();
 
@@ -166,6 +168,8 @@ public class AnuncioController extends Controller {
                 dado = new Anuncio(filledForm.value().get().nome);
                 dado.set_estado(filledForm.get().estado.toUpperCase());
                 dado.set_cidade(filledForm.get().cidade.toUpperCase());
+                dado.set_area(filledForm.get().area);
+                dado.set_escolaridadeMinima(filledForm.get().escolaridadeMinima);
                 dado.set_faixasalarialInferior(filledForm.get().faixasalarialInferior);
                 dado.set_faixasalarialSuperior(filledForm.get().faixasalarialSuperior);
 
@@ -212,6 +216,8 @@ public class AnuncioController extends Controller {
                 dado.set_nome(filledForm.get().nome);
                 dado.set_estado(filledForm.get().estado.toUpperCase());
                 dado.set_cidade(filledForm.get().cidade.toUpperCase());
+                dado.set_area(filledForm.get().area);
+                dado.set_escolaridadeMinima(filledForm.get().escolaridadeMinima);
                 dado.set_faixasalarialInferior(filledForm.get().faixasalarialInferior);
                 dado.set_faixasalarialSuperior(filledForm.get().faixasalarialSuperior);
                 new AnuncioDAO().save(dado);

@@ -21,6 +21,20 @@
             )
             </div>
             <div class="form-group">
+            @helper.inputText(
+                formulario("area"),
+                '_class-> "col-sm-12",
+                '_label->"Área de Atuação", 'placeholder->"Digite a Área de Atuação"
+            )
+            </div>
+            <div class="form-group">
+            @helper.inputText(
+                formulario("escolaridadeMinima"),
+                '_class-> "col-sm-12",
+                '_label->"Escolaridade mínima", 'placeholder->"Digite a Escolaridade Mínima"
+            )
+            </div>
+            <div class="form-group">
             @helper.select(
                 formulario("estado"),
                 estados.map(s => s.id -> s.text),

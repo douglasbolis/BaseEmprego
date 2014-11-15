@@ -82,6 +82,28 @@ public class Anuncio extends models.Entity {
     @Column(name = "NOME", nullable = false)
     private String _nome;
 
+    public String get_area() {
+        return _area;
+    }
+
+    public void set_area(String _area) {
+        this._area = _area;
+    }
+
+    public String get_escolaridadeMinima() {
+        return _escolaridadeMinima;
+    }
+
+    public void set_escolaridadeMinima(String _escolaridadeMinima) {
+        this._escolaridadeMinima = _escolaridadeMinima;
+    }
+
+    @Column(name = "AREA")
+    private String _area;
+
+    @Column(name = "ESCOLARIDADE_MINIMA")
+    private String _escolaridadeMinima;
+
 
     @Column(name = "UF", nullable = false)
     private String _estado;

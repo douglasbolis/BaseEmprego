@@ -12,6 +12,8 @@
             <thead>
                 <tr>
                     <th>Empresa</th>
+                    <th>Área de Atuação</th>
+                    <th>Escolaridade Mínima</th>
                     <th>UF</th>
                     <th>Cidade</th>
                     <th>Salário mínimo</th>
@@ -53,6 +55,8 @@ $(document).ready(function() {
         ajax : '/anuncio.json' + filter(getParameterByName('uf')),
         'columns': [
             { 'data': '_nome' },
+            { 'data': '_area' },
+            { 'data': '_escolaridadeMinima' },
             { 'data': '_estado' },
             { 'data': '_cidade' },
             { 'data': '_faixasalarialInferior' },
