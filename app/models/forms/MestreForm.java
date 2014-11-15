@@ -17,8 +17,9 @@ public class MestreForm extends EntityForm {
     @Constraints.Required
     public String cidade;
 
+    public String escolaridaMinima;
 
-
+    public String area;
 
     public Float faixasalarialInferior;
 
