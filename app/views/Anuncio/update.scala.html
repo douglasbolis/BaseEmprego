@@ -1,61 +1,64 @@
-@(form : play.data.Form[models.forms.MestreForm])
+@(formulario : play.data.Form[models.forms.MestreForm], estados : List[ElementoLista])
+@import views.html.helper._
+
 
 <ol class="breadcrumb">
-    <li><a href="/anuncio">Anuncio</a></li>
-    <li class="active"><a href="#">Alterar</a></li>
+        <li><a href="/anuncio">Anuncio</a></li>
+        <li class="active"><a href="#">Alterar</a></li>
 </ol>
 
 
-@main("Adicionar anuncio") {
+@main("Alterar anuncio") {
 
-<div class="col-sm-12">
-@helper.form(action = routes.AnuncioController.updateHandler() ) {
-
-    <input type="hidden" name="uuid" value='@form("uuid").value'>
-    <div class="col-sm-4 col-sm-offset-4">
-        @helper.inputText(
-            form("nome"),
-            '_value->form("nome").value(),
-            '_label->"Nome",
-            'placeholder->"Digite a Empresa"
-        )
-    </div>
-    <div class="col-sm-4 col-sm-offset-4">
-    @helper.inputText(
-        form("estado"),
-        '_label->"UF", 'placeholder->"Digite a Sigla da UF"
-    )
-    </div>
-    <div class="col-sm-4 col-sm-offset-4">
-    @helper.inputText(
-        form("cidade"),
-        '_label->"Cidade", 'placeholder->"Digite a Cidade"
-    )
-    </div>
-    <div class="col-sm-4 col-sm-offset-4">
-    @helper.inputText(
-        form("faixasalarialInferior"),
-        '_label->"Salario Baixo", 'placeholder->"Digite a Faixa Salarial inferior"
-    )
-    </div>
-    <div class="col-sm-4 col-sm-offset-4">
-    @helper.inputText(
-        form("faixasalarialSuperior"),
-        '_label->"Salario Baixo", 'placeholder->"Digite a Faixa Salarial inferior"
-    )
-    </div>
-    <div class="col-sm-4 col-sm-offset-4">
-        <input type="submit" class="btn btn-default" value="Salvar">
-    </div>
-
-    }
-</div>
-
+        @helper.form(action = routes.AnuncioController.updateHandler() , 'class-> "form-horizontal" , 'role-> "form" ) {
+            <input type="hidden" name="uuid" value='@formulario("uuid").value'>
+            <div class="form-group">
+            @helper.inputText(
+                formulario("nome"),
+                '_class-> "col-sm-12",
+                '_label->"Empresa",
+                'placeholder->"Digite a Empresa"
+            )
+            </div>
+            <div class="form-group">
+            @helper.select(
+                formulario("estado"),
+                estados.map(s => s.id -> s.text),
+                '_class-> "col-sm-12",
+                '_id->"estado",
+                '_label->"Estado",
+                'placeholder->"Digite a Sigla da UF"
+            )
+            </div>
+            <div class="form-group">
+            @helper.inputText(
+                formulario("cidade"),
+                '_class-> "col-sm-12",
+                '_label->"Cidade", 'placeholder->"Digite a Cidade"
+            )
+            </div>
+            <div class="form-group">
+            @helper.inputText(
+                formulario("faixasalarialInferior"),
+                '_class-> "col-sm-12",
+                '_label->"Salario Baixo", 'placeholder->"Digite a Faixa Salarial inferior"
+            )
+            </div>
+            <div class="form-group">
+            @helper.inputText(
+                formulario("faixasalarialSuperior"),
+                '_class-> "col-sm-12",
+                '_label->"Salario Alto", 'placeholder->"Digite a Faixa Salarial superior"
+            )
+            </div>
 
 
-
-
-
-
-
+            <div class="form-group">
+                <div class="col-sm-2 col-sm-offset-10">
+                    <input type="submit" class="btn btn-primary" value="Salvar">
+                </div>
+            </div>
+        }
 }
+
+<script type="application/javascript" src="@routes.Assets.at("js/forms.js")"></script>

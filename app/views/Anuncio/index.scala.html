@@ -1,0 +1,75 @@
+<ol class="breadcrumb">
+    <li class="active"><a href="/anuncio">Anuncio</a></li>
+</ol>
+
+
+
+
+@main("Anuncios") {
+    <a class="btn btn-primary" href="/anuncio/add">Adicionar Anuncio</a>
+    <br/>
+        <table id="main" class="display" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Empresa</th>
+                    <th>UF</th>
+                    <th>Cidade</th>
+                    <th>Salário mínimo</th>
+                    <th>Salário máximo</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+        </table>
+
+
+
+
+}
+
+<script type="application/javascript">
+$(document).ready(function() {
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    function filter (value){
+        if (value.length > 0){
+            return '?uf=' + value
+        }else{
+            return ''
+        }
+    }
+
+
+    $('#main').DataTable(
+        {
+
+        language : { "url" : "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"},
+        dom: 'Rlfrtip',
+        ajax : '/anuncio.json' + filter(getParameterByName('uf')),
+        'columns': [
+            { 'data': '_nome' },
+            { 'data': '_estado' },
+            { 'data': '_cidade' },
+            { 'data': '_faixasalarialInferior' },
+            { 'data': '_faixasalarialSuperior' },
+        {
+            "data": 'uuid',
+            "render" : function ( data, type, full, meta ) {
+                return "<a class=\"btn btn-primary\" href=\"/anuncio/detalhe/" + data + "\">Editar/Detalhar</a>";
+            }
+        }
+        ]}
+    );
+
+
+
+
+
+
+} );
+</script>

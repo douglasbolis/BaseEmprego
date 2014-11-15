@@ -1,7 +1,10 @@
-@(form : play.data.Form[models.forms.DetalheForm])
+@(formulario : play.data.Form[models.forms.DetalheForm])
+@import views.html.helper._
+@import helper.twitterBootstrap._
+
 
 <ol class="breadcrumb">
-    <li><a href="/anuncio">Mestre</a></li>
+    <li><a href="/anuncio">Anuncio</a></li>
     <li class="active"><a href="#">Adicionar Beneficio</a></li>
 </ol>
 
@@ -10,20 +13,22 @@
 
 @main("Adicionar Benefício") {
 
-<div class="col-sm-12">
-@helper.form(action = routes.BeneficioController.addHandler() ) {
-    <input type="hidden" name="mestre_uuid" value='@form("mestre_uuid").value'>
-    <div class="col-sm-4 col-sm-offset-4">
+@helper.form(action = routes.BeneficioController.addHandler() , 'class-> "form-horizontal" , 'role-> "form" ) {
+    <input type="hidden" name="mestre_uuid" value='@formulario("mestre_uuid").value'>
+    <div class="form-group">
         @helper.inputText(
-            form("nome"),
-            '_label->"Nome", 'placeholder->"Digite o nome"
+            formulario("nome"),
+            '_class-> "col-sm-12",
+            '_label->"Benefício", 'placeholder->"Digite o Benefício"
         )
     </div>
-    <div class="col-sm-4 col-sm-offset-4">
-        <input type="submit" class="btn btn-default" value="Salvar">
+    <div class="form-group">
+        <div class="col-sm-2 col-sm-offset-10">
+            <input type="submit" class="btn btn-primary" value="Salvar">
+        </div>
     </div>
     }
-</div>
+
 
 
 
@@ -33,3 +38,5 @@
 
 
 }
+
+<script type="application/javascript" src="@routes.Assets.at("js/forms.js")"></script>

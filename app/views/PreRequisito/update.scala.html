@@ -1,37 +1,39 @@
-@(form : play.data.Form[models.forms.DetalheForm])
-
-<ol class="breadcrumb">
-    <li><a href="/mestre">Anuncio</a></li>
-    <li class="active"><a href="#">Alterar Pre-requisito</a></li>
-</ol>
+@(formulario : play.data.Form[models.forms.DetalheForm])
+    @import views.html.helper._
+    @import helper.twitterBootstrap._
 
 
-@main("Alterar pre-requisito") {
+    <ol class="breadcrumb">
+        <li><a href="/anuncio">Anuncio</a></li>
+        <li class="active"><a href="#">Alterar Pre-Requisito</a></li>
+    </ol>
 
-<div class="col-sm-12">
-@helper.form(action = routes.PreRequisitoController.updateHandler() ) {
 
-    <input type="hidden" name="uuid" value='@form("uuid").value'>
-    <div class="col-sm-4 col-sm-offset-4">
-        @helper.inputText(
-            form("nome"),
-            '_value->form("nome").value(),
-            '_label->"Nome",
-            'placeholder->"Digite o nome"
-        )
-    </div>
-    <div class="col-sm-4 col-sm-offset-4">
-        <input type="submit" class="btn btn-default" value="Salvar">
-    </div>
+    @main("Alterar benefício") {
+
+
+        @helper.form(action = routes.PreRequisitoController.updateHandler() , 'class-> "form-horizontal" , 'role-> "form" ) {
+
+            <input type="hidden" name="uuid" value='@formulario("uuid").value'>
+            <div class="form-group">
+            @helper.inputText(
+                formulario("nome"),
+                '_value->formulario("nome").value(),
+                '_class-> "col-sm-12",
+                '_label->"Pre-Requisito",
+                'placeholder->"Digite o Pre-Requisito"
+            )
+            </div>
+            <div class="form-group">
+                <div class="col-sm-2 col-sm-offset-10">
+                    <input type="submit" class="btn btn-primary" value="Salvar">
+                </div>
+            </div>
+
+        }
+
+
 
     }
-</div>
 
-
-
-
-
-
-
-
-}
+    <script type="application/javascript" src="@routes.Assets.at("js/forms.js")"></script>

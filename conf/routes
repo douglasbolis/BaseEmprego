@@ -4,13 +4,14 @@
 
 # Home page
 GET         /                                     controllers.Application.index()
-GET         /anuncio                              controllers.AnuncioController.index()
-GET         /anuncio/index                        controllers.AnuncioController.index()
-#GET         /anuncio/uf/:uf                       controllers.AnuncioController.indexuf(uf)
+#GET         /estados                              controllers.Application.estados(q : Option[String])
+GET         /anuncio                              controllers.AnuncioController.index(uf :Option[String])
+GET         /anuncio/index                        controllers.AnuncioController.index(uf :Option[String])
+GET         /anuncio.json                         controllers.AnuncioController.index_json(uf: Option[String])
 GET         /anuncio/detalhe/:uuid                controllers.AnuncioController.detalhe(uuid)
 # mestre
 GET         /anuncio/update/:uuid                 controllers.AnuncioController.update(uuid)
-#GET         /anuncio/delete/:uuid                 controllers.AnuncioController.delete(uuid)
+GET         /anuncio/delete/:uuid                 controllers.AnuncioController.delete(uuid)
 GET         /anuncio/add                          controllers.AnuncioController.add()
 POST        /anuncio/add                          controllers.AnuncioController.addHandler()
 POST        /anuncio/update                       controllers.AnuncioController.updateHandler()
@@ -22,6 +23,7 @@ POST        /prerequisito/add                     controllers.PreRequisitoContro
 POST        /prerequisito/update                  controllers.PreRequisitoController.updateHandler()
 # beneficio
 GET         /beneficio/update/:uuid               controllers.BeneficioController.update(uuid)
+GET         /beneficio/update                     controllers.BeneficioController.update(uuid)
 GET         /beneficio/delete/:uuid               controllers.BeneficioController.delete(uuid)
 GET         /beneficio/add/:mestre_uuid           controllers.BeneficioController.add(mestre_uuid)
 POST        /beneficio/add                        controllers.BeneficioController.addHandler()

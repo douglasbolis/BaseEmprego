@@ -30,6 +30,7 @@ libraryDependencies ++= Seq(
   javaCore,
   javaJdbc,
   log4j,
+  javaWs,
   javaJpa.exclude("org.hibernate.javax.persistence", "hibernate-jpa-2.0-api"),
   "org.eclipse.persistence" % "eclipselink" % eclipselinkVersion,
   "junit" % "junit" % "4.11" % "test" exclude("org.hamcrest", "hamcrest-core"),

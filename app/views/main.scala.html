@@ -8,11 +8,21 @@
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("css/bootstrap-theme.min.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("css/bootstrap.min.css")">
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("css/callout.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("lib/DataTables/media/css/dataTables.bootstrap.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("lib/DataTables/media/css/jquery.dataTables.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("lib/select2/select2-bootstrap.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("lib/select2/select2.css")">
+
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
     </head>
-    <body class="container col-sm-12">
+    <body class="container col-lg-12 col-md-12 col-sm-12 col-xs-12">
         @content
     </body>
     <script type="application/javascript" src="@routes.Assets.at("js/jquery-1.11.1.min.js")"></script>
     <script type="application/javascript" src="@routes.Assets.at("js/bootstrap.min.js")"></script>
+    <script type="application/javascript" src="@routes.Assets.at("lib/select2/select2.min.js")"></script>
+    <script type="application/javascript" src="@routes.Assets.at("lib/select2/select2_locale_pt-BR.js")"></script>
+    <script type="application/javascript" src="@routes.Assets.at("lib/DataTables/media/js/jquery.dataTables.min.js")"></script>
+    <script type="application/javascript" src="@routes.Assets.at("lib/DataTables/media/js/dataTables.bootstrap.js")"></script>
+    <script type="application/javascript" src="@routes.Assets.at("lib/DataTables/extensions/ColReorder/js/dataTables.colReorder.min.js")"></script>
 </html>
